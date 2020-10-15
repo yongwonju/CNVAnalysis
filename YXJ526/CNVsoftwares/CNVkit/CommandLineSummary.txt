@@ -1,0 +1,49 @@
+
+----------------samtools--------------------------------
+
+// Used to sort and index all BAM files in a directory
+
+for i in *.bam; do samtools sort i -o $i.sorted && echo $i "bam sorted" && samtools index $i.sorted.bam; done
+
+
+-----------------CNVkit--------------------------------
+
+// standard 
+
+//finds all the reads that will be used in the CNV pipeline - ignore repetitive region
+1. cnvkit.py access hg19.fasta -o access.hg19.bed
+
+// calculates the target and off target regions
+2. cnvkit.py autobin *.bam -t baits.bed -g access.hg19.bed 
+
+// target and off-target for each sample
+3. cnvkit.py coverage Sample.bam baits.target.bed -o Sample.targetcoverage.cnn
+4. cnvkit.py coverage Sample.bam baits.antitarget.bed -o Sample.antitargetcoverage.cnn
+
+// generate pool of reference
+5. cnvkit.py reference *Normal.{,anti}targetcoverage.cnn --fasta hg19.fa -o my_reference.cnn
+
+// normalise sample to pooled normal
+5. cnvkit.py fix Sample.targetcoverage.cnn Sample.antitargetcoverage.cnn my_reference.cnn -o Sample.cnr
+
+// segment using CBS
+6. cnvkit.py segment Sample.cnr -o Sample.cns --drop-low-coverage --drop-outliers
+
+// produce the scatter graph
+7. cnvkit.py scatter Sample.cnr -s Sample.cns -o Sample-scatter.pdf
+
+
+-------purity -0.6- 
+for f in *.cns; do cnvkit.py call $f --purity 0.6 -o $f.purity_60.call.cns; done
+
+
+
+----------------MarkDuplicates--------------------------------
+// marks duplicates in the bam file to be later ignored in the cnv detection pipeline
+
+for f in *sorted; do gatk MarkDuplicates -I $f -O MarkedDuplicates/$f.marked_duplicates -M $f_metrics.txt; done 
+
+
+
+
+

@@ -1,0 +1,32 @@
+Processing 10 samples
+Using divider of 500000
+Using noise cutoff of 0.25
+Using transition probability of 1.0E-5
+Blanking 5 singular vectors
+Informative genome chunks have an average of 20 reads or more
+Reading 0 SavvyResults/N154.BAM.sorted.coverageBinner
+Reading 1 SavvyResults/N177.BAM.sorted.coverageBinner
+Reading 2 SavvyResults/N379.BAM.sorted.coverageBinner
+Reading 3 SavvyResults/N586.BAM.sorted.coverageBinner
+Reading 4 SavvyResults/N621.BAM.sorted.coverageBinner
+Reading 5 SavvyResults/N679.bam.sorted.coverageBinner
+Reading 6 SavvyResults/N750.BAM.sorted.coverageBinner
+Reading 7 SavvyResults/N794.BAM.sorted.coverageBinner
+Reading 8 SavvyResults/N874.BAM.sorted.coverageBinner
+Reading 9 SavvyResults/s0230.coverageBinner
+Normalising
+Average reads in each bucket: 2044.8901965790146
+Number of genome chunks: 5735
+Performed SVD in 109ms
+Number of low-noise genome chunks: 4629
+Average noise: 0.15867670991979876
+0.13658764063299333	0.13658764063299333	0	0	15315472	SavvyResults/N154.BAM.sorted.coverageBinner
+0.19033016968545338	0.19033016968545338	0	0	18812114	SavvyResults/N177.BAM.sorted.coverageBinner
+0.0946469396732269	0.0946469396732269	0	0	12256080	SavvyResults/N379.BAM.sorted.coverageBinner
+0.12168008389394268	0.12168008389394268	0	0	15781411	SavvyResults/N586.BAM.sorted.coverageBinner
+0.22950626372165348	0.22950626372165348	0	0	17112099	SavvyResults/N621.BAM.sorted.coverageBinner
+0.22377358495584412	0.22377358495584412	0	0	24521149	SavvyResults/N679.bam.sorted.coverageBinner
+0.08235259299953683	0.08150183024608579	1	0	15011410	SavvyResults/N750.BAM.sorted.coverageBinner
+0.03774558711913314	0.03774558711913314	0	0	8922662	SavvyResults/N794.BAM.sorted.coverageBinner
+0.22504275992514716	0.22504275992514716	0	0	20574336	SavvyResults/N874.BAM.sorted.coverageBinner
+0.18354507532271425	0.18154587323496338	2	0	11889965	SavvyResults/s0230.coverageBinner
